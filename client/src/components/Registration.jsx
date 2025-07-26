@@ -7,6 +7,8 @@ import axios, { all } from "axios";
 const Registration = () => {
     const [usersName, setUserNameValue] = useState([]);
     const [usersPassword, setUserPassword] = useState([]);
+    const [passInputVisibility, setPassInputVisibility] = useState("password");
+    const [eyeInputStyle, setEyeInputStyle] = useState("bi-eye-slash-fill");
     const navigate = useNavigate();
 
     const RegisterClick = async () => 
@@ -28,7 +30,27 @@ const Registration = () => {
                 alert('Password must contain at least 8 chars!');
             }
         }
+    }
 
+    const changePassVisibility = () => {
+        if(passInputVisibility === "password")
+        {
+            setPassInputVisibility("text");
+        } else 
+        {
+            setPassInputVisibility("password");
+        }   
+    }
+
+    const changeEyeStyle = () =>
+    {
+        if(eyeInputStyle === "bi-eye-slash-fill")
+        {
+            setEyeInputStyle("bi-eye-fill");
+        } else
+        {
+            setEyeInputStyle("bi-eye-slash-fill");
+        }
     }
 
     return (
@@ -43,13 +65,16 @@ const Registration = () => {
                    
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                         <ShinyText text="User Name" disabled={false} speed={3} className='custom-class'/>
-                        <input placeholder="Create user name" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}
+                        <input autoComplete="new-password" placeholder="Create user name" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}
                         value={usersName} onChange={(e)=>setUserNameValue(e.target.value)}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20px"}}>
                         <ShinyText text="Password" disabled={false} speed={3} className='custom-class'/>
-                        <input placeholder="Create password" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}
-                        vlaue={usersPassword} onChange={(e)=>setUserPassword(e.target.value)}/>
+                        <div style={{width:"84%", display:"flex", alignItems:"center"}}>
+                            <input type={passInputVisibility} autoComplete="new-password" placeholder="Create password" className="todo-input" style={{marginTop: "10px", marginLeft:"auto", width:"50%", zIndex:"1", marginRight:"0px"}}
+                            value={usersPassword} onChange={(e)=>setUserPassword(e.target.value)}/>
+                            <button className="Todo-container-button" onClick={() =>  {changePassVisibility(); changeEyeStyle()}} style={{zIndex:"2", marginRight:"auto"}}> <i className={`bi ${eyeInputStyle}`}></i> </button>
+                        </div>
                     </div>
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20px"}}>
                         <button className="Reg-button" onClick={()=>RegisterClick()}> Register </button>

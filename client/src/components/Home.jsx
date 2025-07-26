@@ -1,6 +1,7 @@
 import React from "react";
 import DarkVeil from "./darkVeil/DarkVeil";
 import { useNavigate } from "react-router-dom";
+import SplitText from "./splitText/splitText";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Home = () => {
                         <i class="bi bi-calendar2-check-fill" style={{color:"#7c3fedff"}}></i>
                         <p>Todo webapp</p>
                     </div>
-                    <h1 style={{marginLeft:"auto", marginRight:"auto", fontSize:"65px", fontWeight:"650"}}>Start your day</h1>
+                    <SplitText style={{marginLeft:"auto", marginRight:"auto", fontSize:"65px", fontWeight:"650"}} text="Start your day!" delay={100} duration={0.6} ease="power3.out" splitType="chars" from={{ opacity: 0, y: 40 }} to={{ opacity: 1, y: 0 }} threshold={0.1} rootMargin="-100px" textAlign="center" />
                     <div style={{display:"flex", flexDirection:"row", gap:"40px", marginTop:"15px"}}>
                         <button className="Home-menu-button" onClick={()=>navigate('/Registration')}> Get Started </button>
                         <button className="Home-menu-button" style={{backgroundColor:"rgb(30, 30, 30)", color: "gray"}} onClick={()=> {navigate('/About')}}> Learn More </button>
