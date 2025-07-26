@@ -10,6 +10,7 @@
   -webkit-background-clip: text;
   text-align: bottom;
   font-size: 18px;
+  cursor: default;
   background-clip: text;
   display: inline-block;
   animation: shine 5s linear infinite;

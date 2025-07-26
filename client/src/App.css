@@ -151,3 +151,32 @@ ul {
   color: #7b4fb4;
 }
 
+
+/* Home.jsx */
+
+.Todo-ico-container{
+  width: 250px;
+  height: 50px;
+  background-color: rgba(73, 73, 73, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50px;
+  border-style:solid;
+  border-color: white;
+  border-width: 1px;
+}
+
+.Home-menu-button{
+  width: 250px;
+  height: 65px;
+  border-radius: 50px;
+  border-width: 1px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 300;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Home-menu-button:hover{
+  transform: scale(1.1);
+}

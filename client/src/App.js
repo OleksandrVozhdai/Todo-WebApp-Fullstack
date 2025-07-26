@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<><Todo /></>} />
         <Route path="/Home" element={<><Home /></>} />
+        <Route path="/About" element={<></>} />
         <Route path="*" element={<h1 className="header-text">404 - Page not found</h1>} /> 
 
       </Routes>
