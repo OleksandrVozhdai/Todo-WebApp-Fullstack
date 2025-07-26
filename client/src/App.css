@@ -170,6 +170,7 @@ ul {
 
 .Todo-ico-container:hover{
   transform: scale(1.1);
+  filter: brightness(1.5);
 }
 
 .Home-menu-button{

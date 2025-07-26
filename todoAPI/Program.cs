@@ -11,7 +11,9 @@ namespace todoAPI
 
             // Add services to the container.
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))); 
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
+
+			builder.Services.AddCors();
 
 			builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -20,8 +22,13 @@ namespace todoAPI
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            app.UseCors(options=>
+            options.WithOrigins("http://localhost:3000")
+			.AllowAnyHeader()
+			.AllowAnyMethod());
+
+			// Configure the HTTP request pipeline.
+			if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();

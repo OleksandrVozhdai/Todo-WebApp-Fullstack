@@ -9,5 +9,6 @@ namespace todoAPI.Models
 		}
 
 		public DbSet<TodoModel> TodoSet { get; set; }
+		public DbSet<UserModel> UsersSet { get; set; }
 	}
 }

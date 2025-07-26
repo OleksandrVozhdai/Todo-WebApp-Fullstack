@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import DarkVeil from "./darkVeil/DarkVeil";
 import { useNavigate } from "react-router-dom";
 import ShinyText from "./shinyText/ShinyText";
+import axios, { all } from "axios";
 
 const Registration = () => {
+    const [usersName, setUserNameValue] = useState([]);
+    const [usersPassword, setUserPassword] = useState([]);
     const navigate = useNavigate();
+
+    const RegisterClick = async () => 
+    {
+        try{
+            await axios.post('https://localhost:7052/api/Auth/register', {
+                userName: usersName,
+                password: usersPassword
+            }); 
+            
+            console.log("User successfuly registered!");
+        } catch (error){
+            if (error.response?.data === "User with this name already registered!")
+            {
+                alert('This username already taken');
+            }
+             if (error.response?.data === "Password must contain at least 8 chars!")
+            {
+                alert('Password must contain at least 8 chars!');
+            }
+        }
+
+    }
 
     return (
         <>
@@ -18,14 +43,16 @@ const Registration = () => {
                    
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                         <ShinyText text="User Name" disabled={false} speed={3} className='custom-class'/>
-                        <input placeholder="Create user name" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}/>
+                        <input placeholder="Create user name" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}
+                        value={usersName} onChange={(e)=>setUserNameValue(e.target.value)}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20px"}}>
                         <ShinyText text="Password" disabled={false} speed={3} className='custom-class'/>
-                        <input placeholder="Create password" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}/>
+                        <input placeholder="Create password" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}
+                        vlaue={usersPassword} onChange={(e)=>setUserPassword(e.target.value)}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20px"}}>
-                        <button className="Reg-button" style={{}}> Register </button>
+                        <button className="Reg-button" onClick={()=>RegisterClick()}> Register </button>
                         <p className="Reg-text-button" onClick={() => navigate('/Login')}>Have an account?</p>
                     </div>
                 </div>

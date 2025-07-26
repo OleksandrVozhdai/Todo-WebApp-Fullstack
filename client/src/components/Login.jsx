@@ -1,10 +1,33 @@
-import React from "react";
+import {React, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import DarkVeil from "./darkVeil/DarkVeil";
 import ShinyText from "./shinyText/ShinyText";
+import axios from "axios";
+
 
 const Login = () => {
-     const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [usersName, setUserNameValue] = useState([]);
+    const [usersPassword, setUserPassword] = useState([]);
+
+    const loginClick = async () =>
+    {
+        try{
+            await axios.post('https://localhost:7052/api/Auth/login', {
+                userName: usersName,
+                password: usersPassword
+            });
+
+            alert('Logined successfuly');
+            navigate('/Todos'); 
+        }
+        catch (error){
+            if(error.response?.data === "User not found")
+                alert('User not found');
+            if(error.response?.data === "Invalid credentials")
+                alert('Wrong password');
+        }
+    }
 
     return (
         <>
@@ -18,14 +41,16 @@ const Login = () => {
                    
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                         <ShinyText text="User Name" disabled={false} speed={3} className='custom-class'/>
-                        <input placeholder="Enter your user name" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}/>
+                        <input placeholder="Enter your user name" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}
+                        value={usersName} onChange={(e) => setUserNameValue(e.target.value)}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20px"}}>
                         <ShinyText text="Password" disabled={false} speed={3} className='custom-class'/>
-                        <input placeholder="Enter your password" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}/>
+                        <input placeholder="Enter your password" className="todo-input" style={{marginTop: "10px", width:"50%", marginRight:"auto", marginLeft:"auto"}}
+                        value={usersPassword} onChange={(e)=>setUserPassword(e.target.value)}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20px"}}>
-                        <button className="Reg-button" style={{}}> Log In </button>
+                        <button className="Reg-button" onClick={()=> loginClick()}> Log In </button>
                         <p className="Reg-text-button" onClick={() => navigate('/Registration')}>Register?</p>
                     </div>
                 </div>
