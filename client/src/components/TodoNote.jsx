@@ -59,7 +59,7 @@ const TodoNote = () =>
                             <button onClick={()=>saveClick()} className="add-task-button" style={{marginTop: "10px", width:"60px", marginLeft:"10px", marginRight:"15px" , color:"#f2e9ffff"}}> save  </button>
                         </div>
                         <div style={{width:"100%", height:"80%"}}>
-                            <textarea onChange={(e)=> {(setNoteDesc(e.target.value))}} value={noteDesc} autoComplete="new-password" className="todo-input-noscale" style={{paddingTop:"10px", marginTop: "30px", marginLeft:"10px", width:"97%", height:"100%", marginRight:"auto", color:"white"}}/>
+                            <textarea onChange={(e)=> {(setNoteDesc(e.target.value))}} value={noteDesc} autoComplete="new-password" className="todo-input-noscale" style={{ resize:"none", paddingTop:"10px", marginTop: "30px", marginLeft:"10px", width:"97%", height:"100%", marginRight:"auto", color:"white"}}/>
                         </div>
                     </div>
                 </main>

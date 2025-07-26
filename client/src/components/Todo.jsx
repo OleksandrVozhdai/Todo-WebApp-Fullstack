@@ -86,7 +86,7 @@ const Todo =() =>{
     axios.post(apiLink, {
             id: 0,
             title: inputValue,
-            description: "What you are goin to do?",
+            description: "What you are going to do?",
             isCompleted: false
         }).catch(error => {
             console.log(error);
