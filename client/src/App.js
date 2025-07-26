@@ -8,6 +8,7 @@ import Registration from './components/Registration';
 import Login from './components/Login';
 import PageNotFound from './components/PageNotFound';
 import About from './components/About';
+import TodoNote from './components/TodoNote';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Home" element={<><Home /></>} />
         <Route path="/About" element={<><About /></>} />
         <Route path="/Login" element={<><Login /></>} />
+        <Route path="/TodoNote/:id" element={<><TodoNote /></>} />
         <Route path="/Registration" element={<><Registration /></>} />
         <Route path="*" element={<><PageNotFound /></>} /> 
 

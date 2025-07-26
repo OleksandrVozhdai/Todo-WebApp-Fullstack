@@ -30,6 +30,32 @@ body{
   outline: none;
 }
 
+.todo-input-noscale{
+  color: #9d9d9d;
+  background-color: transparent;
+  border-radius: 9px;
+  border-style: solid;
+  border-color: #3E1671;
+  border-width: 1px;  
+  height: 30px;
+  width: 90%;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: 10px;
+  transition: transform 0.3s ease-in-out;
+  padding-left: 20px;
+  font-size: 15px;
+}
+
+.todo-input-noscale:hover{
+  border-color: #6a32b4;
+}
+
+.todo-input-noscale:focus{
+  border-color: #7843bd;
+  outline: none;
+}
+
 .add-task-button{
   width: 30px;
   height: 30px;
@@ -237,3 +263,10 @@ ul {
   color:gray;
   color: rgb(174, 174, 174);
 }
+
+/* TodoNote.jsx */
+
+.Note-container{
+  background-color: #15101cbb;
+  border-radius: 10px;
+}   

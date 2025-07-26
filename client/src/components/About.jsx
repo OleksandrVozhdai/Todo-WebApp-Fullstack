@@ -30,19 +30,13 @@ const About = () => {
         <strong>API</strong>: RESTful, JSON-based
       </li>
       <li>
-        <strong>Database</strong>: In-memory or SQL (depending on configuration)
-      </li>
-      <li>
-        <strong>Deployment</strong>: local or cloud in future versions
+        <strong>Database</strong>: SQL (Azure)
       </li>
     </ul>
-    <p>
-      Whether you're managing daily goals or planning large projects — this app
-      helps you stay organized and focused.
-    </p>
+
 
     <h2>GitHub Repository</h2>
-    <p>You can explore the source code or contribute here:</p>
+    <p>You can explore the source code here:</p>
     <p>
       <a href="https://github.com/OleksandrVozhdai/Todo-WebApp-Fullstack" target="_blank" rel="noopener noreferrer"><strong>Todo-WebApp-Fullstack</strong></a>
     </p>
@@ -52,16 +46,16 @@ const About = () => {
     <p> You are free to use, modify, and distribute this project — just keep the license notice.</p>
 
     <h2>Resources Used</h2>
-    <p>Some of the tools, packages, and references that helped build this app:</p>
+    <p>Some of the tools and references that helped build this app:</p>
     <ul>
       <a href="https://reactbits.dev/" target="_blank" rel="noopener noreferrer"><strong>reactbits.dev</strong></a>
     </ul>
 
-    <h2>Author</h2>
-    <p>
-      Created by <strong>Oleksandr Vozhdai</strong>
-    </p>
-  </section>
+    <h2>Author :</h2>
+   <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "flex-start" }}>
+        <p className="Reg-text-button-noscale" onClick={()=> window.open('https://github.com/OleksandrVozhdai')} ><strong>Oleksandr Vozhdai <i class="bi bi-github"></i></strong></p>
+    </div>
+    </section>
 </main>
 
         </div>

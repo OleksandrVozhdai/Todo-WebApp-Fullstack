@@ -120,7 +120,7 @@ const Todo =() =>{
                             <ul>
                                 {todos.filter(todo => !todo.isCompleted).map((todo)=> 
                             
-                                    <div className="Todo-container" key={todo.id}  onClick={() => navigate(`/todos/${todo.id}`)}>
+                                    <div className="Todo-container" key={todo.id}  onClick={() => navigate(`/TodoNote/${todo.id}`)}>
                                         <p>{todo.title}</p>
                                         <div style={{marginLeft:"auto", marginRight:"25px", marginTop:"auto", marginBottom:"auto"}}>
                                             <button className="Todo-container-button" onClick={(event) => {event.stopPropagation(); completeClick(todo.id, todo.title, todo.description)}} style={{marginRight:"0"}}> <i class="bi bi-check-lg"></i> </button>
@@ -134,7 +134,7 @@ const Todo =() =>{
                         <ShinyText text={`Done - ${uncompletedValue}`} disabled={false} speed={3} className='custom-class' />
                         <ul>
                             {todos.filter(todo=> todo.isCompleted).map((todo)=>
-                                <div className="Todo-container" key={todo.id} onClick={() => navigate(`/todos/${todo.id}`)}>
+                                <div className="Todo-container" key={todo.id} onClick={() => navigate(`/TodoNote/${todo.id}`)}>
                                     <p className="completed-text">
                                         <span className="no-strike">
                                             <i className="bi bi-check-circle-fill"></i>
@@ -148,6 +148,7 @@ const Todo =() =>{
                                 </div>
                             )}
                         </ul>
+                        <p className="Reg-text-button" style={{marginLeft:"auto", marginRight:"auto"}} onClick={() => navigate('/Home')}>Home page</p>
                     </div>
                 </div>
             </div>
