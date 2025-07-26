@@ -8,6 +8,7 @@ Main Features:
   Backend communication using Axios
 
 Tech Stack:
+
 🖥️ Frontend:
 
     React
