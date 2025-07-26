@@ -2,10 +2,14 @@
 
 This project was created as part of learning React. The main focus was on the visual design and appearance of the site rather than implementing complex business logic or backend functionality.
 Main Features:
-  Create, edit, and delete tasks
-  Mark tasks as completed
-  Modern, responsive user interface
-  Backend communication using Axios
+
+  Create, edit, and delete tasks.
+  
+  Mark tasks as completed.
+  
+  Modern, responsive user interface.
+  
+  Backend communication using Axios.
 
 Tech Stack:
 
