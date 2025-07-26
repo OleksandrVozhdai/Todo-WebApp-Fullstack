@@ -164,6 +164,12 @@ ul {
   border-style:solid;
   border-color: white;
   border-width: 1px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.Todo-ico-container:hover{
+  transform: scale(1.1);
 }
 
 .Home-menu-button{
@@ -179,4 +185,54 @@ ul {
 
 .Home-menu-button:hover{
   transform: scale(1.1);
+}
+
+
+/* Registration.jsx */
+
+.Reg-button{
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+  border-width: 1px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 300;
+  margin-top: 20px;
+  color: #3a1e5e;
+  background-color: #9E78CF;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.Reg-button:hover{
+  transform: scale(1.1);
+  color: #dec1ff;
+  background-color: rgb(138, 102, 177);
+}
+
+.Reg-text-button{
+  color:gray;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Reg-text-button:hover{
+  transform: scale(1.1);
+  color: rgb(174, 174, 174);
+  text-decoration: underline;
+}
+
+.Reg-text-button-noscale
+{
+  color:gray;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  margin-left:40px;
+  font-size:25px;
+}
+
+.Reg-text-button-noscale:hover
+{
+  color:gray;
+  color: rgb(174, 174, 174);
 }
