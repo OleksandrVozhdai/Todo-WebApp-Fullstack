@@ -9,13 +9,19 @@ Main Features:
 
 Tech Stack:
 🖥️ Frontend:
+
     React
+    
     JavaScript
+    
     HTML / CSS
 
 🔧 Backend:
+
     C# (.NET 8)
+    
     Custom REST API
+    
     SQL Database
 
 Home Page | ![](screenshots/home_page.png)
