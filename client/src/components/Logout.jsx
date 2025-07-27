@@ -3,13 +3,14 @@ import DarkVeil from "./darkVeil/DarkVeil";
 import { useNavigate } from "react-router-dom";
 import ShinyText from "./shinyText/ShinyText";
 
-const Logout = () =>
+const Logout = ({setIsAuth}) =>
 {
     const navigate = useNavigate();
 
     const logoutClick = () =>
     {
         localStorage.removeItem("token");
+        setIsAuth(false);
         navigate('/Home');
     }
 

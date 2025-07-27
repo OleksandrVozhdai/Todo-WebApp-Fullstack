@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<Navigate to="/Home" replace />} />
         <Route path="/Home" element={<><Home /></>} />
         <Route path="/About" element={<><About /></>} />
-        <Route path="/Login" element={isAuth ? <Navigate to="/Logout" replace /> : <><Login setIsAuth={setIsAuth}/></> } />
+        <Route path="/Login" element={<Login setIsAuth={setIsAuth}></Login>}/>
         <Route path="/Logout" element={isAuth ? <><Logout setIsAuth={setIsAuth}/></> : <Navigate to="/Login" replace /> } />
         <Route path ="/TodoNote/:id" element={isAuth ? <TodoNote /> : <Navigate to="/Login" replace />} />
         <Route path="/Registration" element={isAuth ? <Navigate to="/Logout" replace /> : <><Registration/></>} />
