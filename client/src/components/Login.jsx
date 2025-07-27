@@ -15,10 +15,12 @@ const Login = () => {
     const loginClick = async () =>
     {
         try{
-            await axios.post('https://localhost:7052/api/Auth/login', {
+            const response = await axios.post('https://localhost:7052/api/Auth/login', {
                 userName: usersName,
                 password: usersPassword
             });
+
+            localStorage.setItem("token", response.data.token);
 
             alert('Logined successfuly');
             navigate('/Todos'); 

@@ -14,10 +14,12 @@ const Todo =() =>{
     const [inputValue, setInputValue] = useState([]);
     const [completedValue, setCompletedValue] = useState(0);
     const [uncompletedValue, setuncompletedValue] = useState(0);
+    const [userName, setUserName] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
         getTasks();
+        setUserName(getUserNameFromToken());
     }, []);
 
     useEffect(() => {
@@ -96,6 +98,19 @@ const Todo =() =>{
         }       
     }
 
+    function getUserNameFromToken() {
+            const token = localStorage.getItem("token");
+            if (!token) return null;
+
+            const payloadBase64 = token.split('.')[1];
+            const payload = JSON.parse(atob(payloadBase64));
+
+            return payload.sub; 
+        }
+
+
+
+
     return (
     <>
     <div style={{ width: '100vw', height: '100vh', position: 'relative', overflowX: 'hidden' }}>
@@ -103,6 +118,11 @@ const Todo =() =>{
             <DarkVeil />
         </div>
         <main style={{ position: 'relative', zIndex: 1 }}> 
+            <div style={{width:"100%", display:"flex", alignItems:"center", marginTop:"30px" , justifyContent:"center", flexDirection:"row"}}>
+                <p className="Reg-text-button" onClick={()=>navigate('/Logout')}><ShinyText text={"Hello, " + userName} disabled={false} speed={3} className='custom-class' /></p>
+            </div>
+            
+
             <div style={{ width: '100%', height: '600px', position: 'relative' }}>
 
                 <div style={{width:"100%", display:"flex", flexDirection:"column"}}>

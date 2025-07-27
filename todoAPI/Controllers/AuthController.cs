@@ -1,7 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using todoAPI.Models;
 using todoAPI.Services;
+
 
 namespace todoAPI.Controllers
 {
@@ -10,10 +16,12 @@ namespace todoAPI.Controllers
 	public class AuthController : ControllerBase
 	{
 		private readonly AppDbContext _context;
+		private readonly TokenGenerator _tokenGenerator;
 
-		public AuthController(AppDbContext context)
+		public AuthController(AppDbContext context, TokenGenerator tokenGenerator)
 		{
 			_context = context;
+			_tokenGenerator = tokenGenerator;
 		}
 
 		[HttpPost("register")]
@@ -56,7 +64,19 @@ namespace todoAPI.Controllers
 			if (user.PasswordHash != PasswordHasher.Hash(dto.Password))
 				return Unauthorized("Invalid credentials");
 
-			return Ok(new { user.Id, user.UserName });
+			var token = _tokenGenerator.GenerateJwtToken(user);
+
+			return Ok(new { user.Id, user.UserName, token });
+		}
+
+		[Authorize]
+		[HttpGet("me")]
+		public IActionResult GetCurrentUser()
+		{
+			var userName = User.Identity?.Name; 
+			var id = User.FindFirst("id")?.Value;
+
+			return Ok(new { userName, id });
 		}
 	}
 }
