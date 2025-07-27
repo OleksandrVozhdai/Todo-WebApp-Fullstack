@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using todoAPI.Models;
 using todoAPI.Services;
-
 
 namespace todoAPI.Controllers
 {
@@ -33,7 +28,7 @@ namespace todoAPI.Controllers
 				return BadRequest("User with this name already registered!");
 			}
 
-			if(dto.Password == null || dto.Password.Length <= 8)
+			if (dto.Password == null || dto.Password.Length <= 8)
 			{
 				return BadRequest("Password must contain at least 8 chars!");
 			}
@@ -47,7 +42,7 @@ namespace todoAPI.Controllers
 			_context.UsersSet.Add(user);
 			await _context.SaveChangesAsync();
 
-			return Ok(new { message = "User registered!"});
+			return Ok(new { message = "User registered!" });
 		}
 
 		[HttpPost("login")]
@@ -58,7 +53,7 @@ namespace todoAPI.Controllers
 			if (user == null)
 				return Unauthorized("User not found");
 
-			if(dto.Password == null)
+			if (dto.Password == null)
 				return Unauthorized("Invalid credentials");
 
 			if (user.PasswordHash != PasswordHasher.Hash(dto.Password))
@@ -73,7 +68,7 @@ namespace todoAPI.Controllers
 		[HttpGet("me")]
 		public IActionResult GetCurrentUser()
 		{
-			var userName = User.Identity?.Name; 
+			var userName = User.Identity?.Name;
 			var id = User.FindFirst("id")?.Value;
 
 			return Ok(new { userName, id });
