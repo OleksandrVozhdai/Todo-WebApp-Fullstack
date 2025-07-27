@@ -5,7 +5,7 @@ import ShinyText from "./shinyText/ShinyText";
 import axios from "axios";
 
 
-const Login = () => {
+const Login = ({ setIsAuth }) => {
     const navigate = useNavigate();
     const [usersName, setUserNameValue] = useState([]);
     const [usersPassword, setUserPassword] = useState([]);
@@ -21,6 +21,8 @@ const Login = () => {
             });
 
             localStorage.setItem("token", response.data.token);
+
+            setIsAuth(true);
 
             alert('Logined successfuly');
             navigate('/Todos'); 
