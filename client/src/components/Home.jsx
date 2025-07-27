@@ -2,7 +2,8 @@ import React from "react";
 import DarkVeil from "./darkVeil/DarkVeil";
 import { useNavigate } from "react-router-dom";
 import SplitText from "./splitText/splitText";
-import isAuthenticated from "./actions/Auth";
+import { isAuthenticated } from "./actions/Auth";
+
 
 const Home = () => {
     const navigate = useNavigate();

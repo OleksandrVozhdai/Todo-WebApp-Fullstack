@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ShinyText from './shinyText/ShinyText'
 import DarkVeil from './darkVeil/DarkVeil';
+import { getUserIdFromToken, getUserNameFromToken } from "./actions/Auth"; 
 
 const apiLink = 'https://localhost:7052/api/ListTodo';
 
@@ -15,11 +16,13 @@ const Todo =() =>{
     const [completedValue, setCompletedValue] = useState(0);
     const [uncompletedValue, setuncompletedValue] = useState(0);
     const [userName, setUserName] = useState();
+    const [userId, setUserId] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
         getTasks();
         setUserName(getUserNameFromToken());
+        setUserId(getUserIdFromToken());
     }, []);
 
     useEffect(() => {
@@ -44,7 +47,8 @@ const Todo =() =>{
                 id : id,
                 title: OriignalTitle,
                 description: OriginalDesc,
-                isCompleted: true
+                isCompleted: true,
+                userId: userId
             }).then(() => {
                 getTasks();
             }).catch (error => {
@@ -53,11 +57,11 @@ const Todo =() =>{
     }
 
     const calculateCompletedTask = () => {
-        setCompletedValue(todos.filter(todo => !todo.isCompleted).length);
+        setCompletedValue(todos.filter(todo => !todo.isCompleted  && todo.userId?.toString() === userId?.toString()).length);
     }
 
     const calculateUncompletedTask = () => {
-        setuncompletedValue(todos.filter(todo => todo.isCompleted).length);
+        setuncompletedValue(todos.filter(todo => todo.isCompleted  && todo.userId?.toString() === userId?.toString()).length);
     }
 
     const uncompleteClick = (id, OriignalTitle, OriginalDesc) => {
@@ -65,7 +69,8 @@ const Todo =() =>{
                 id : id,
                 title: OriignalTitle,
                 description: OriginalDesc,
-                isCompleted: false
+                isCompleted: false,
+                userId: userId
             }).then(() => {
                getTasks();
             }).catch (error => {
@@ -89,7 +94,8 @@ const Todo =() =>{
             id: 0,
             title: inputValue,
             description: "What you are going to do?",
-            isCompleted: false
+            isCompleted: false,
+            userId: userId
         }).catch(error => {
             console.log(error);
         }).then(() => {
@@ -98,15 +104,7 @@ const Todo =() =>{
         }       
     }
 
-    function getUserNameFromToken() {
-            const token = localStorage.getItem("token");
-            if (!token) return null;
-
-            const payloadBase64 = token.split('.')[1];
-            const payload = JSON.parse(atob(payloadBase64));
-
-            return payload.sub; 
-        }
+    
 
 
 
@@ -138,7 +136,7 @@ const Todo =() =>{
                         <ShinyText text={`Tasks to do - ${completedValue}`} disabled={false} speed={3} className='custom-class' />
                         <div className="central-container">
                             <ul>
-                                {todos.filter(todo => !todo.isCompleted).map((todo)=> 
+                                {todos.filter(todo => !todo.isCompleted && todo.userId?.toString() === userId?.toString()).map((todo)=> 
                             
                                     <div className="Todo-container" key={todo.id}  onClick={() => navigate(`/TodoNote/${todo.id}`)}>
                                         <p>{todo.title}</p>
@@ -153,7 +151,7 @@ const Todo =() =>{
                         </div>
                         <ShinyText text={`Done - ${uncompletedValue}`} disabled={false} speed={3} className='custom-class' />
                         <ul>
-                            {todos.filter(todo=> todo.isCompleted).map((todo)=>
+                            {todos.filter(todo=> todo.isCompleted && todo.userId?.toString() === userId?.toString()).map((todo)=>
                                 <div className="Todo-container" key={todo.id} onClick={() => navigate(`/TodoNote/${todo.id}`)}>
                                     <p className="completed-text">
                                         <span className="no-strike">

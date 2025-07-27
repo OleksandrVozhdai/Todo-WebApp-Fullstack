@@ -21,7 +21,7 @@ const Logout = () =>
             </div>
             <main style={{ position: 'relative', zIndex: 1, color: '#fff', padding: '20px' }}>
                 <div className="central-container" style={{backgroundColor:"transparent", width: "500px", height:"500px", marginTop:"100px"}}>
-                   <p className="Reg-text-button-noscale" onClick={()=> navigate('/Todos')}><i class="bi bi-arrow-left"></i> Go back</p>
+                    <p className="Reg-text-button-noscale" onClick={()=> navigate('/Todos')}><i class="bi bi-arrow-left"></i> Go back</p>
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20px"}}>
                         <button className="Reg-button" onClick={()=> logoutClick()}> Log out </button>
                     </div>
