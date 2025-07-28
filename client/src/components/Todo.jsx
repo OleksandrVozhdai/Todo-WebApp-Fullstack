@@ -123,7 +123,7 @@ const Todo =() =>{
 
             <div style={{ width: '100%', height: '600px', position: 'relative' }}>
 
-                <div style={{width:"100%", display:"flex", flexDirection:"column"}}>
+                <div style={{ display:"flex", flexDirection:"column"}}>
                    
                     <div className="central-container" style={{backgroundColor: ""}}>
 

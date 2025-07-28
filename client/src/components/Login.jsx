@@ -63,7 +63,7 @@ const Login = ({ setIsAuth }) => {
                 <DarkVeil />
             </div>
            <main style={{ position: 'relative', zIndex: 1, color: '#fff', padding: '20px' }}>
-                <div className="central-container" style={{backgroundColor:"transparent", width: "500px", height:"500px", marginTop:"100px"}}>
+                <div className="central-container" style={{backgroundColor:"transparent", maxWidth: "500px", height:"500px", marginTop:"100px"}}>
                    <p className="Reg-text-button-noscale" onClick={()=> navigate('/Home')}><i class="bi bi-arrow-left"></i> Go back</p>
                    
                     <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>

@@ -83,6 +83,8 @@ body{
   margin-left: auto;
   margin-right: auto;
 
+  min-width: 100px;
+  max-width: 500px;
 }
 
 .Todo-container
@@ -208,11 +210,31 @@ ul {
   font-size: 20px;
   font-weight: 300;
   transition: transform 0.3s ease-in-out;
+  margin-right: auto;
+  margin-left: auto;
+
+  min-width: 250px;
 }
 
 .Home-menu-button:hover{
   transform: scale(1.1);
 }
+
+.Home-button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.Home-split-text{
+  margin-Left: auto; 
+  margin-Right: auto;
+  font-Size: 65px;
+  font-Weight: 650;
+}
+
+
 
 
 /* Registration.jsx */
@@ -270,3 +292,106 @@ ul {
   background-color: #15101cbb;
   border-radius: 10px;
 }   
+
+.Note-upper-panel{
+  width: 100%;
+  height: 10%; 
+  display: flex; 
+  flex-direction: row;
+}
+
+.Note-bin-button
+{
+  margin-top: 10px; 
+  width: 30px;
+  margin-left: 10px;
+  color: rgb(158, 120, 207);
+  background-color: transparent;
+}
+
+.Note-bin-button:hover
+{
+  background-color: transparent;
+}
+
+.Save-back-container{
+  display: flex;
+  flex-direction: row; 
+  margin-left: auto;
+}
+
+.Notes-title-input{
+  margin-top: 10px; 
+  width: 50%; 
+  margin-right: 10px;
+  margin-left: 10px; 
+  color: white;
+}
+
+.Notes-text-area{
+  resize: none;
+  padding-top: 10px; 
+  margin-top: 30px; 
+  margin-bottom: 30px; 
+  margin-left: 10px; 
+  margin-right: 10px;
+  max-width: 2000px; 
+  height: 100%; 
+  margin-right: auto; 
+  color: white;
+}
+
+/* Media */
+
+@media (max-width: 600px)
+{
+  .Home-button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Home-menu-button{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: auto;
+  }
+
+  .Home-split-text{
+    font-Size: 45px;
+  }
+
+  
+}
+
+@media (max-width: 710px)
+{
+.Note-upper-panel{
+    width: 100%;
+    height: 20%; 
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .Note-bin-button {
+    margin-top: 10px; 
+    width: 30px;
+    margin-left: auto;
+    color: rgb(158, 120, 207);
+    background-color: transparent;
+  }
+
+  .Save-back-container{
+    display: flex;
+    flex-direction: row; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Notes-title-input{
+    width: 80%; 
+    padding: 10px;
+  }
+  .Notes-text-area{
+    margin-right: 10px;
+  }
+}
